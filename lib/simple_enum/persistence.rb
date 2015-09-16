@@ -1,4 +1,4 @@
-require "simple_enum/persistence/attribute"
+require "simple_enum/persistence/extension"
 require "simple_enum/persistence/hasher"
 require "simple_enum/persistence/version"
 
@@ -7,5 +7,3 @@ module SimpleEnum
     # Your code goes here...
   end
 end
-
-require "simple_enum/persistence/railtie" if defined?(Rails)
