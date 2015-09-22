@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["bbtfrr@gmail.com"]
 
   spec.summary       = %q{Persistence support for SimpleEnum.}
-  spec.description   = %q{SimpleEnum::Multiple is extension of SimpleEnum, which brings data persistence support to SimpleEnum.}
+  spec.description   = %q{SimpleEnum::Persistence is extension of SimpleEnum, which brings data persistence support to SimpleEnum.}
   spec.homepage      = "https://github.com/bbtfr/simple_enum-persistence"
   spec.license       = "MIT"
 
