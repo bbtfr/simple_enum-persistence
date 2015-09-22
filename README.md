@@ -4,7 +4,7 @@
 [![Gem](https://img.shields.io/gem/v/simple_enum-persistence.svg)](https://rubygems.org/gems/simple_enum-persistence)
 
 SimpleEnum::Persistence is extension of SimpleEnum, which brings data persistence support to SimpleEnum.
-Sometimes, we need to use one of our table as enum, in order to add/remove enum type dynamically
+Sometimes, we need to use one of our Model as enum data source, in order to add/remove enum type dynamically, SimpleEnum::Persistence is built for this!
 
 ## Why not ActiveRecord association?
 
