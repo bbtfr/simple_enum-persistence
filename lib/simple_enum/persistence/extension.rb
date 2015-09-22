@@ -5,7 +5,7 @@ module SimpleEnum
         persistence = options.delete :persistence
         if persistence
           options[:with] ||= SimpleEnum.with.reject do |feature|
-            %i(attribute scope).include? feature
+            [:attribute, :scope].include? feature
           end
           options[:map] = :persistence
 
