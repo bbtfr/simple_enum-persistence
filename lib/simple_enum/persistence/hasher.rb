@@ -1,7 +1,9 @@
 module SimpleEnum
   module Persistence
-    class Hasher < Hash
-      attr_reader :enum_klass, :enum_key, :enum_value
+    class Hasher
+      include Enumerable
+
+      attr_reader :enum_klass, :enum_key, :enum_value, :enum_mapping
 
       def initialize options
         @enum_klass = options[0]
@@ -37,11 +39,46 @@ module SimpleEnum
       end
 
       def enum_replace records
-        hash = Hash.new
+        @enum_mapping = Array.new
         records.each do |record|
-          hash[record.send(enum_key)] = record.send(enum_value)
+          key = record.send(enum_key)
+          value =  record.send(enum_value)
+          @enum_mapping.push([key, value])
         end
-        replace hash
+      end
+
+      def each_pair &block
+        @enum_mapping.each &block
+      end
+      alias_method :each, :each_pair
+
+      def key? key
+        @enum_mapping.any? { |k, v| k == key }
+      end
+
+      def value? value
+        @enum_mapping.any? { |k, v| v == value }
+      end
+
+      def key value
+        @enum_mapping.find { |k, v| v == value }[0]
+      end
+
+      def value key
+        @enum_mapping.find { |k, v| k == key }[1]
+      end
+      alias_method :[], :value
+
+      def keys
+        @enum_mapping.map { |k, v| k }
+      end
+
+      def values
+        @enum_mapping.map { |k, v| v }
+      end
+
+      def values_at *keys
+        @enum_mapping.select { |k, v| keys.include? k }.map { |k, v| v }
       end
 
       # Do nothing when freeze, cause we have to motify the hash later
