@@ -30,7 +30,11 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'simple_enum', '~> 2.2'
 
   spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency 'activerecord', '>= 4.0.0'
+  if RUBY_VERSION >= '2.2.2'
+    spec.add_development_dependency 'activerecord', '>= 4.0.0'
+  else
+    spec.add_development_dependency 'activerecord', '>= 4.0.0', '< 5.0.0'
+  end
   spec.add_development_dependency 'mongoid', '>= 4.0.0'
   spec.add_development_dependency 'rspec', '~> 2.14'
 end
