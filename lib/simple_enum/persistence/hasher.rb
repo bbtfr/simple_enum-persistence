@@ -61,11 +61,13 @@ module SimpleEnum
       end
 
       def key value
-        @enum_mapping.find { |k, v| v == value }[0]
+        matched = @enum_mapping.find { |k, v| v == value }
+        matched[0] if matched
       end
 
       def value key
-        @enum_mapping.find { |k, v| k == key }[1]
+        matched = @enum_mapping.find { |k, v| k == key }
+        matched[1] if matched
       end
       alias_method :[], :value
 
